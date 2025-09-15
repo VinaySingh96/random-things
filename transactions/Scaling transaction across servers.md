@@ -1,4 +1,3 @@
-Good question 👍
 When you horizontally scale out servers (say multiple instances of your app + database shards/replicas), handling **transactions** becomes tricky because transactions need **atomicity, consistency, isolation, durability (ACID)** — but in a distributed setup, the data and logic may not live on one machine anymore.
 
 Let’s break it down step by step:
@@ -77,7 +76,8 @@ If you use **microservices** (each with its own DB):
 * If multiple microservices with separate DBs → use Saga or Outbox patterns instead of strict ACID.
 
 ---
-Nice — let’s go deep. There are two *fundamentally different* ways to make a business transaction that spans multiple services look “atomic” to the user:
+
+There are two *fundamentally different* ways to make a business transaction that spans multiple services look “atomic” to the user:
 
 1. **Distributed atomic commit (Two-Phase Commit / XA / 2PC family)** — preserves **strong ACID** across multiple resource managers.
 2. **Saga (compensating transactions / event-driven)** — preserves **business-level atomicity** by composing local transactions + compensations; yields **eventual consistency**.
@@ -255,7 +255,7 @@ For a 3-step saga: `A → B → C` (A then B then C):
 
 ---
 
-Great follow-up 👌 — this is the tricky part that often confuses people: **what exactly is the Transaction Manager (TM), and how does microservice code interact with it in 2PC?**
+this is the tricky part that often confuses people: **what exactly is the Transaction Manager (TM), and how does microservice code interact with it in 2PC?**
 
 Let’s unpack this:
 
@@ -561,10 +561,6 @@ But in practice, **most Node microservice architectures prefer:**
 
 ---
 
-Got it 👍 — you’re asking me to **explain “polyglot persistence”**, since I mentioned it when talking about Node microservices and 2PC.
-
----
-
 ## 🔹 What is Polyglot Persistence?
 
 * The term comes from **“polyglot programming”** (using multiple languages in one system).
@@ -638,7 +634,7 @@ Bad for 2PC ❌ (since not all DBs support distributed transaction protocols).
 
 ---
 
-Perfect — let’s go deep into **Saga pattern** 👌
+let’s go deep into **Saga pattern** 👌
 I’ll break it down into:
 
 1. **Why Saga is needed**
